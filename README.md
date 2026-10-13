@@ -309,7 +309,7 @@ C:\Users\wuqian\.workbuddy\binaries\python\envs\default\Scripts\python.exe train
 
 ### 其他
 
-- 数据：`data/flowers-102/`（已下载，330 MB，不用再下）
+- 数据：`data/flowers-102/`（已下载，330 MB）
 - 没有 GPU，所有 `.to(device)` 都是 CPU。**别去写 `.cuda()`，会直接报错。**
 - 这套代码里的中文输出在 Windows 终端偶尔会乱码；
   `.vscode/settings.json` 里已经设了 UTF-8，如果还是乱，在终端敲 `chcp 65001`。
