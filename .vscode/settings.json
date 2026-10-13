@@ -1,0 +1,36 @@
+{
+  // ------------------------------------------------------------------
+  // 这个文件的作用：让 VSCode 自动用【项目专用的 Python 环境】。
+  //
+  // 背景：你机器上装了不止一个 Python。
+  //   · PATH 上那个 `python`（工具链自带）—— 没有 torch，跑项目会报
+  //     ModuleNotFoundError: No module named 'torch'
+  //   · 这个项目需要的那个 —— torch 2.14.0+cpu 装在它里面
+  //
+  // 所以下面把解释器和终端都指向第二个。配好之后，
+  // 你在 VSCode 终端里敲 `python train.py ...` 就是对的 python，
+  // 不需要记任何长路径，也不需要手动 activate。
+  // ------------------------------------------------------------------
+
+  "python.defaultInterpreterPath": "C:/Users/wuqian/.workbuddy/binaries/python/envs/default/Scripts/python.exe",
+
+  // 打开终端时自动激活它
+  "python.terminal.activateEnvironment": true,
+  "python.terminal.activateEnvInCurrentTerminal": true,
+
+  // 保险绳：不管激活有没有生效，都把项目环境排到 PATH 最前面。
+  // 这样即使 Python 扩展哪天没反应过来，`python` 也还是指对了。
+  "terminal.integrated.env.windows": {
+    "PATH": "C:\\Users\\wuqian\\.workbuddy\\binaries\\python\\envs\\default\\Scripts;${env:PATH}"
+  },
+
+  // 让终端里的中文输出正常显示（这套代码里有不少中文 print）
+  "terminal.integrated.defaultProfile.windows": "PowerShell",
+  "files.encoding": "utf8",
+
+  // 项目里那些调试脚本，收起来别占资源管理器的位置
+  "files.exclude": {
+    "**/__pycache__": true,
+    "**/*.pyc": true
+  }
+}
